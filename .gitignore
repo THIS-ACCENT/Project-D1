@@ -41,9 +41,6 @@
 *.VC.db
 *.VC.opendb
 
-#.ini file
-Config/*.ini
-
 # Developing Map
 Content/Maps/DevMap
 
