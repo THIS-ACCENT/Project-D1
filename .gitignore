@@ -41,6 +41,12 @@
 *.VC.db
 *.VC.opendb
 
+#.ini file
+Config/*.ini
+
+# Developing Map
+Content/Maps/DevMap
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
