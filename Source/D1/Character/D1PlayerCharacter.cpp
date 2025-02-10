@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "AbilitySystemComponent.h"
+#include "D1.h"
 
 AD1PlayerCharacter::AD1PlayerCharacter()
 {
@@ -87,6 +88,32 @@ AD1PlayerCharacter::AD1PlayerCharacter()
 	}
 }
 
+class UAbilitySystemComponent* AD1PlayerCharacter::GetAbilitySystemComponent() const
+{
+	return ASC;
+}
+
+void AD1PlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	for (const auto& StartAbility : StartAbilities)
+	{
+		FGameplayAbilitySpec StartSpec(StartAbility);
+		ASC->GiveAbility(StartSpec);
+
+	}
+	//맵만 잘 넣어주면 매핑해서 연동 가능
+	for (const auto& StartInputAbility : StartInputAbilities)
+	{
+		FGameplayAbilitySpec StartSpec(StartInputAbility.Value);
+		StartSpec.InputID = StartInputAbility.Key;
+		ASC->GiveAbility(StartSpec);
+
+	}
+
+	SetupGASInputComponent();
+}
+
 void AD1PlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
@@ -135,10 +162,12 @@ void AD1PlayerCharacter::GASInputPressed(int32 InputId)
 		Spec->InputPressed = true;
 		if (Spec->IsActive())
 		{
+			D1_LOG(LogD1, Log, TEXT("Activate %s"), *Spec->Ability->GetName());
 			ASC->AbilitySpecInputPressed(*Spec);
 		}
 		else
 		{
+			D1_LOG(LogD1, Log, TEXT("Activate %s"), *Spec->Ability->GetName());
 			ASC->TryActivateAbility(Spec->Handle);
 		}
 	}
@@ -153,6 +182,7 @@ void AD1PlayerCharacter::GASInputReleased(int32 InputId)
 		Spec->InputPressed = false;
 		if (Spec->IsActive())
 		{
+			D1_LOG(LogD1, Log, TEXT("Activate %s"), *Spec->Ability->GetName());
 			//Active
 			ASC->AbilitySpecInputReleased(*Spec);
 		}

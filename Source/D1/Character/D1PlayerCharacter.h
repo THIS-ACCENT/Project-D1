@@ -16,6 +16,8 @@ class D1_API AD1PlayerCharacter : public AD1CreatureBase
 	GENERATED_BODY()
 public:
 	AD1PlayerCharacter();
+	virtual class UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual void PossessedBy(AController* NewController) override;
 
 	virtual void BeginPlay() override;
 
