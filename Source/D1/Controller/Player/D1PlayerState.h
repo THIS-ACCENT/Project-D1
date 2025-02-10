@@ -18,7 +18,7 @@ public:
 	AD1PlayerState();
 	virtual class UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
-private:
+protected:
 	UPROPERTY(EditAnywhere, Category = "GAS")
 	TObjectPtr<class UAbilitySystemComponent> ASC;
 

@@ -8,7 +8,11 @@ public class D1 : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicIncludePaths.AddRange(new string[] { "D1" });
+        PublicIncludePaths.AddRange(new string[] { 
+			"D1",
+			"D1/Character",
+			"D1/Controller"
+		});
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput","UMG" });
 
