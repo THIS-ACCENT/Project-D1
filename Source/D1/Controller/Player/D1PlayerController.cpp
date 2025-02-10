@@ -1,7 +1,7 @@
 // Copyright (c) 2025 THIS-ACCENT. All Rights Reserved.
 
 
-#include "Player/D1PlayerController.h"
+#include "D1PlayerController.h"
 
 void AD1PlayerController::BeginPlay()
 {
