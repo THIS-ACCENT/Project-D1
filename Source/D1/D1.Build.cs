@@ -7,10 +7,18 @@ public class D1 : ModuleRules
 	public D1(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+        PublicIncludePaths.AddRange(new string[] { "D1" });
+
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput","UMG" });
+
+        PrivateDependencyModuleNames.AddRange(new string[] 
+		{
+            "GameFeatures",
+            "GameplayAbilities",
+            "GameplayTasks",
+            "GameplayTags"
+        });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
