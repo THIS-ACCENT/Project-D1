@@ -45,6 +45,9 @@
 Content/Maps/DevMap
 Content/Blueprints/Developing
 
+#Asset
+Content/SciFiCharacterPack
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
