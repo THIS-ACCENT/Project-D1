@@ -41,8 +41,9 @@
 *.VC.db
 *.VC.opendb
 
-# Developing Map
+# Developing file
 Content/Maps/DevMap
+Content/Blueprints/Developing
 
 # Precompiled Assets
 SourceArt/**/*.png
