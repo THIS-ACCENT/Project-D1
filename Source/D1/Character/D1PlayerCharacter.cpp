@@ -26,7 +26,7 @@ AD1PlayerCharacter::AD1PlayerCharacter()
 	// Movement
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
-	GetCharacterMovement()->JumpZVelocity = 700.f;
+	GetCharacterMovement()->JumpZVelocity = 400.f;
 	GetCharacterMovement()->AirControl = 0.35f;
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
@@ -38,18 +38,18 @@ AD1PlayerCharacter::AD1PlayerCharacter()
 	GetMesh()->SetCollisionProfileName(TEXT("NoCollision"));
 
 	//Asset Import & Set Mesh
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharacterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/SciFiCharacterPack/SciFiWarrior/Meshes/SK_SciFiWarrior.SK_SciFiWarrior'"));
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CharacterMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/SciFiCharacterPack/SciFiGirl/Meshes/SK_SciFiGirl.SK_SciFiGirl'"));
 	if (CharacterMeshRef.Object)
 	{
 		GetMesh()->SetSkeletalMesh(CharacterMeshRef.Object);
 	}
 
 	//TODO: Set AnimInstance
-	/*static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT(""));
+	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimInstanceClassRef(TEXT("/Game/Blueprints/Developing/ABP_D1PlayerCharacter0.ABP_D1PlayerCharacter0_C"));
 	if (AnimInstanceClassRef.Class)
 	{
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClassRef.Class);
-	}*/
+	}
 
 	// Camera
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
@@ -63,25 +63,25 @@ AD1PlayerCharacter::AD1PlayerCharacter()
 
 	//Input
 	//TODO: 병합 후 경로 수정
-	static ConstructorHelpers::FObjectFinder<UInputMappingContext> InputMappingContextRef(TEXT("/Script/EnhancedInput.InputMappingContext'/Game/Blueprints/Developing/IMC_Default.IMC_Default'"));
+	static ConstructorHelpers::FObjectFinder<UInputMappingContext> InputMappingContextRef(TEXT("/Script/EnhancedInput.InputMappingContext'/Game/Blueprints/Developing/IMC_Default0.IMC_Default0'"));
 	if (nullptr != InputMappingContextRef.Object)
 	{
 		InputMappingContext = InputMappingContextRef.Object;
 	}
 
-	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionMoveRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Move.IA_Move'"));
+	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionMoveRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Move0.IA_Move0'"));
 	if (nullptr != InputActionMoveRef.Object)
 	{
 		MoveAction = InputActionMoveRef.Object;
 	}
 
-	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionLookRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Look.IA_Look'"));
+	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionLookRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Look0.IA_Look0'"));
 	if (nullptr != InputActionLookRef.Object)
 	{
 		LookAction = InputActionLookRef.Object;
 	}
 	
-	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionJumpRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Jump.IA_Jump'"));
+	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionJumpRef(TEXT("/Script/EnhancedInput.InputAction'/Game/Blueprints/Developing/Actions/IA_Jump0.IA_Jump0'"));
 	if (nullptr != InputActionJumpRef.Object)
 	{
 		JumpAction = InputActionJumpRef.Object;
